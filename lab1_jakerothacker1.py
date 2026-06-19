@@ -1,4 +1,4 @@
-    """ UPC-A validator
+""" UPC-A validator
 
     Jake Rothacker
 
@@ -7,7 +7,7 @@
 
     Date:6/19/2026
     
-    """
+"""
 
 
 def find_UPC(upc11):
