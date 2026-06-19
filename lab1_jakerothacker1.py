@@ -43,7 +43,19 @@ def validate_input(input):
         return False
     return True
 
+def print_results(expected, actual):
+    """Prints the expected and actual UPC 12 digits.
 
+    Args:
+        expected (str): The expected 12th digit.
+        actual (str): The actual 12th digit.
+    """
+    print("Expected UPC 12:", expected)
+    print("Actual UPC 12:", actual)
+    if expected == actual:
+        print("UPC is valid.")
+    else:
+        print("UPC is invalid.")
 
 status = True
 while status ==True:
@@ -62,10 +74,4 @@ while status ==True:
     upc12 = upc[-1]
 
     expected_upc12 = find_UPC(upc11)
-
-    print("Expected UPC 12:", expected_upc12)
-    print("Actual UPC 12:", upc12)
-    if expected_upc12 == upc12:
-        print("UPC is valid.")
-    else:
-        print("UPC is invalid.")
+    print_results(expected_upc12, upc12)
