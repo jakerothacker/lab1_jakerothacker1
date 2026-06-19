@@ -9,7 +9,6 @@
     
 """
 
-
 def find_UPC(upc11):
     """Finds the 12th digit of a UPC-A given the first 11 digits.
 
@@ -82,7 +81,6 @@ def upc_check(upc):
 
 status = True
 while status ==True:
-
 
     upc = input("Please enter your 12-digit UPC: ")
 
