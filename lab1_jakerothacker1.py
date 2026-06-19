@@ -37,7 +37,7 @@ def validate_input(input):
         input (str): Any string
 
     Returns:
-        bool: Ture if the input is a 12-digit number, False otherwise.
+        bool: True if the input is a 12-digit number, False otherwise.
     """
     if len(input) != 12 or not input.isdigit():
         return False
@@ -57,6 +57,29 @@ def print_results(expected, actual):
     else:
         print("UPC is invalid.")
 
+def upc_check(upc):
+    """Takes input and checks if it is a valid UPC-A
+
+    Args:
+        12_digit_upc (str): Any string works, but it should be a 12-digit number.
+
+    Returns:
+        bool: True if the input is a valid UPC-A, False otherwise.
+    """
+    if not validate_input(upc):
+        print("Invalid UPC. UPC entered was not a 12-digit number. Type 'quit' to exit.")
+        return False
+
+    upc11 = upc[:-1]
+    upc12 = upc[-1]
+
+    expected_upc12 = find_UPC(upc11)
+    print_results(expected_upc12, upc12)
+    if expected_upc12 == upc12:
+        return True
+    else:
+        return False
+
 status = True
 while status ==True:
 
@@ -66,12 +89,5 @@ while status ==True:
     if upc == "quit":
         status = False
         continue
-    elif not validate_input(upc):
-        print("Invalid UPC. UPC entered was not a 12-digit number. Type 'quit' to exit.")
-        continue
-
-    upc11 = upc[:-1]
-    upc12 = upc[-1]
-
-    expected_upc12 = find_UPC(upc11)
-    print_results(expected_upc12, upc12)
+    upc_check(upc)
+        
