@@ -16,7 +16,10 @@ def find_UPC(upc11):
 
 
     Args:
-        upc11 (str): The first 11 digits of the UPC-A code.
+        upc11 (str): The first 11 digits of the UPC-A code. MUST BE AN 11-DIGIT STRING.
+
+    Returns:
+        str: The expected 12th digit of the UPC-A code.
     """
     total = 0
     for i in range(11):
@@ -26,6 +29,20 @@ def find_UPC(upc11):
             total += int(upc11[i])
     check_digit = (10 - (total % 10)) % 10
     return str(check_digit)
+
+def validate_input(input):
+    """checks if the input is 12-digits
+
+    Args:
+        input (str): Any string
+
+    Returns:
+        bool: Ture if the input is a 12-digit number, False otherwise.
+    """
+    if len(input) != 12 or not input.isdigit():
+        return False
+    return True
+
 
 
 status = True
@@ -37,7 +54,7 @@ while status ==True:
     if upc == "quit":
         status = False
         continue
-    elif len(upc) != 12 or not upc.isdigit():
+    elif not validate_input(upc):
         print("Invalid UPC. UPC entered was not a 12-digit number. Type 'quit' to exit.")
         continue
 
